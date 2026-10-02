@@ -43,3 +43,9 @@ th { color: var(--muted); font-weight: 600; }
 footer { margin-top: 48px; color: var(--muted); font-size: 15px; }
 .links { display: flex; flex-wrap: wrap; gap: 12px; margin: 20px 0; }
 .links a { background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 8px 16px; text-decoration: none; }
+.games { list-style: none; padding: 0; margin: 24px 0; display: grid; gap: 12px; }
+.games li { display: flex; align-items: center; gap: 16px; margin: 0; padding: 16px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; }
+.games img { width: 56px; height: 56px; border-radius: 13px; flex: none; }
+.games h2 { font-size: 19px; margin: 0; }
+.games h2 a { color: var(--ink); text-decoration: none; }
+.games p { margin: 2px 0 0; color: var(--muted); font-size: 15px; }

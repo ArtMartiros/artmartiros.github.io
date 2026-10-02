@@ -1,9 +1,44 @@
-# artmartiros.github.io
+# Сайт студии — artmartiros.github.io
 
-The site of Paint Drop, published by GitHub Pages from this repository:
+Сайт игр AvatarifyAI. Публикуется через GitHub Pages из ветки `master`: после пуша обновляется сам. Локально лежит в `~/projects/studio-site`, рядом с играми и студией.
 
-- `paintdrop/privacy.html` — the privacy policy, linked from the game's settings, Google Play and the App Store: https://artmartiros.github.io/paintdrop/privacy.html
-- `paintdrop/index.html` — the game's page, its support address for the stores: https://artmartiros.github.io/paintdrop/
-- the site's root is the developer website of the store pages; `app-ads.txt` for the ad networks goes here when the game shows ads.
+Репозиторий публичный: этого требует бесплатный GitHub Pages. Здесь только то, что и так видно на сайте, без цифр, ключей и планов.
 
-The game itself is in a private repository; its `docs/STORE.md` says where these addresses are used.
+## Что на сайте
+
+- `/` — список игр студии.
+- `/<игра>/` — страница игры. Это сайт разработчика для Google Play и Support URL для App Store.
+- `/<игра>/privacy.html` — политика конфиденциальности. Ссылка на неё стоит в настройках игры, в Google Play и в App Store.
+- `/app-ads.txt` — файл для рекламных сетей, один на все игры. Появится, когда в играх включится реклама.
+
+Папка игры — это её адрес (`/paintdrop/`), он вписан в сторы и в сборки. Папку не переименовывать.
+
+## Как устроено
+
+Страницы руками не правят: их собирает `_src/build.py`.
+
+- `_src/studio.json` — общее для всех игр: издатель и почта.
+- `_src/games/<игра>.json` — карточка игры: название, описание, дата политики, что игра собирает, форматы рекламы, рекламные сети, для кого игра.
+- `_src/ad_networks.json` — рекламные сети и ссылки на их политики.
+- `_src/templates/` — общий текст страниц. Правка здесь меняет страницы всех игр.
+- `style.css` — один стиль на весь сайт.
+
+Папка `_src` на сайт не попадает: GitHub Pages пропускает папки, имя которых начинается с `_`.
+
+```
+python3 _src/build.py          # собрать страницы
+python3 _src/build.py --check  # только проверить, что страницы совпадают с _src
+```
+
+## Новая игра
+
+1. Карточка `_src/games/<игра>.json` по образцу `paintdrop.json`. Имя файла станет адресом игры.
+2. Иконка 192 × 192 — `<игра>/icon.png`.
+3. `python3 _src/build.py`.
+4. Адрес политики — в паспорт игры (`studio/games/<игра>.md`) и в сборку (`PRIVACY_POLICY_URL`).
+
+## Политика должна совпадать с игрой
+
+Общий текст описывает стартовый набор студии (PROCESS.md, этап 7): Amplitude, Firebase (Analytics, Crashlytics, Remote Config), AppsFlyer, AppLovin MAX с окном согласия. Если в игре другой набор сервисов или она собирает другие данные, сначала правится карточка или общий текст, потом анкеты сторов о данных.
+
+Если текст политики поменялся по существу, нужно обновить `policy_date` в карточках затронутых игр. Сборка предупреждает, когда текст изменился, а дата осталась прежней.

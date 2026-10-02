@@ -1,0 +1,32 @@
+<!doctype html>
+<!-- Built by _src/build.py from _src/templates/home.html and _src/games/. Edit those, not this file. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>${publisher} games</title>
+<meta name="description" content="Games by ${publisher} for iPhone and Android.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+<header>
+  <div>
+    <h1>${publisher}</h1>
+    <p>Games for iPhone and Android</p>
+  </div>
+</header>
+
+<ul class="games">
+${games}
+</ul>
+
+<h2>Support</h2>
+<p>Questions about our games, bug reports and privacy requests: <a href="mailto:${email}">${email}</a>.</p>
+
+<footer>
+  <p>${publisher} · <a href="mailto:${email}">${email}</a></p>
+</footer>
+</main>
+</body>
+</html>

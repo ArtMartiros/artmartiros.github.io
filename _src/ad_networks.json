@@ -1,0 +1,8 @@
+{
+  "AppLovin": {"link": "AppLovin", "policy": "https://www.applovin.com/privacy/"},
+  "Google AdMob": {"link": "Google", "policy": "https://policies.google.com/privacy"},
+  "Unity Ads": {"link": "Unity", "policy": "https://unity.com/legal/privacy-policy"},
+  "Mintegral": {"link": "Mintegral", "policy": "https://www.mintegral.com/en/privacy"},
+  "Liftoff": {"link": "Liftoff", "policy": "https://liftoff.io/privacy-policy/"},
+  "Moloco": {"link": "Moloco", "policy": "https://www.moloco.com/privacy-policy"}
+}
