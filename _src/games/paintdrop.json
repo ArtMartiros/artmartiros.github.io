@@ -8,6 +8,7 @@
   "policy_date": "2026-10-03",
   "play_data": "The levels and sets you start and finish, restarts, time spent, your sound and vibration settings",
   "settings_example": "how often ads may be shown",
+  "attribution": ["Tenjin", "AppsFlyer"],
   "ad_formats": "a full-screen ad between levels and, if you choose to watch it, a short video that gives you more paint",
   "ad_networks": ["AppLovin", "Google AdMob", "Unity Ads", "Mintegral", "Liftoff", "Moloco"],
   "audience": "adults and teenagers"

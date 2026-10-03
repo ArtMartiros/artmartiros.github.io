@@ -22,7 +22,7 @@ SITE = SRC.parent
 MONTHS = ["January", "February", "March", "April", "May", "June", "July",
           "August", "September", "October", "November", "December"]
 CARD_FIELDS = ["name", "store_name", "kind", "platforms", "description", "about", "policy_date",
-               "play_data", "settings_example", "ad_formats", "ad_networks", "audience"]
+               "play_data", "settings_example", "attribution", "ad_formats", "ad_networks", "audience"]
 EFFECTIVE = re.compile(r"<p>Effective [^<]*</p>")
 
 
@@ -38,18 +38,23 @@ def and_list(items):
     return items[0] if len(items) == 1 else ", ".join(items[:-1]) + " and " + items[-1]
 
 
-def game_values(slug, card, studio, networks):
+def game_values(slug, card, studio, networks, trackers):
     missing = [f for f in CARD_FIELDS if f not in card]
     unknown = [n for n in card.get("ad_networks", []) if n not in networks]
+    unknown_trackers = [t for t in card.get("attribution", []) if t not in trackers]
     if missing:
         sys.exit(f"_src/games/{slug}.json: missing fields {missing}")
     if unknown:
         sys.exit(f"_src/games/{slug}.json: ad networks not in _src/ad_networks.json {unknown}")
+    if unknown_trackers:
+        sys.exit(f"_src/games/{slug}.json: attribution services not in _src/attribution.json {unknown_trackers}")
     if not (SITE / slug / "icon.png").exists():
         sys.exit(f"{slug}/icon.png is missing")
     values = {f: html.escape(card[f]) for f in CARD_FIELDS if isinstance(card[f], str)}
     day = date.fromisoformat(card["policy_date"])
     ads = card["ad_networks"]
+    # The services that find out which ad campaign brought a player: one row each in the table of recipients.
+    used = card["attribution"]
     values.update(
         slug=slug,
         tagline=values["kind"][0].upper() + values["kind"][1:] + " for " + values["platforms"],
@@ -61,6 +66,12 @@ def game_values(slug, card, studio, networks):
         ad_networks_links=", ".join(
             f'<a href="{html.escape(networks[n]["policy"])}">{html.escape(networks[n]["link"])}</a>'
             for n in ads),
+        attribution_rows="\n".join(
+            f'  <tr><td>{html.escape(t)} ({html.escape(trackers[t]["company"])})</td>'
+            f'<td>Finding out which ad campaign brought a player, fraud prevention</td>'
+            f'<td><a href="{html.escape(trackers[t]["policy"])}">{html.escape(trackers[t]["link"])}</a></td></tr>'
+            for t in used),
+        attribution_text=html.escape(", ".join(used)),
     )
     return values
 
@@ -68,7 +79,8 @@ def game_values(slug, card, studio, networks):
 def build():
     studio = load(SRC / "studio.json")
     networks = load(SRC / "ad_networks.json")
-    games = [game_values(card.stem, load(card), studio, networks)
+    trackers = load(SRC / "attribution.json")
+    games = [game_values(card.stem, load(card), studio, networks, trackers)
              for card in sorted((SRC / "games").glob("*.json"))]
     pages = {}
     for game in games:
