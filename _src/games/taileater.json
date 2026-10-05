@@ -5,10 +5,10 @@
   "platforms": "Android",
   "description": "Snakes eat each other from the tail until only one is left. A calm snake puzzle for Android.",
   "about": "Tail Eater is a calm snake puzzle with one simple rule: snakes eat from the tail. Tap a snake and it crawls straight ahead. If the first thing in its way is the tail of another snake, it eats that snake and grows longer. Bump into a wall, a head or a body and you lose a heart. Clear the board until only one snake is left.",
-  "policy_date": "2026-10-03",
+  "policy_date": "2026-10-05",
   "play_data": "The levels you start, win, restart and leave, your moves, mistakes and hearts, the hints you use, time spent",
   "settings_example": "how often ads may be shown",
-  "attribution": ["Tenjin"],
+  "attribution": ["Tenjin", "AppsFlyer"],
   "ad_formats": "a full-screen ad between levels and, if you choose to watch it, a short video that gives you an extra heart, a hint or double coins",
   "ad_networks": ["AppLovin", "Google AdMob", "Unity Ads", "Mintegral", "Liftoff", "Moloco"],
   "audience": "adults and teenagers"
