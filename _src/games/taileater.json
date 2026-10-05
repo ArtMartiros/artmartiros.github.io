@@ -10,6 +10,6 @@
   "settings_example": "how often ads may be shown",
   "attribution": ["Tenjin", "AppsFlyer"],
   "ad_formats": "a full-screen ad between levels and, if you choose to watch it, a short video that gives you an extra heart, a hint or double coins",
-  "ad_networks": ["AppLovin", "Google AdMob", "Unity Ads", "Liftoff", "Moloco"],
+  "ad_networks": ["AppLovin", "Google AdMob", "Unity Ads", "Mintegral", "Liftoff", "Moloco"],
   "audience": "adults and teenagers"
 }
