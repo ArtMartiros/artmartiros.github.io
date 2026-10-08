@@ -1,0 +1,17 @@
+{
+  "name": "Hunger Race",
+  "store_name": "Hunger Race",
+  "kind": "an animal racing game",
+  "platforms": "Android",
+  "description": "Train a young animal and race it against rivals. An animal racing game for Android.",
+  "about": "Hunger Race is a racing game about animals. Train your junior's speed, stamina and power, enter races against other animals and win your way through a career and up a ladder of rivals. Win a career and you may find an egg: come back the next day to hatch it.",
+  "policy_date": "2026-10-08",
+  "play_data": "The races you start and finish, your training, your career and ladder progress, the eggs you find and hatch, the races you retry, time spent and how much memory the game uses",
+  "settings_example": "",
+  "remote_config": false,
+  "consent_first": true,
+  "attribution": ["Tenjin"],
+  "ad_formats": "",
+  "ad_networks": [],
+  "audience": "teenagers and adults"
+}

@@ -35,6 +35,8 @@ def template(name):
 
 
 def and_list(items):
+    if not items:
+        return ""
     return items[0] if len(items) == 1 else ", ".join(items[:-1]) + " and " + items[-1]
 
 
@@ -80,18 +82,30 @@ def build():
     studio = load(SRC / "studio.json")
     networks = load(SRC / "ad_networks.json")
     trackers = load(SRC / "attribution.json")
-    games = [game_values(card.stem, load(card), studio, networks, trackers)
-             for card in sorted((SRC / "games").glob("*.json"))]
+    cards = {path.stem: load(path) for path in sorted((SRC / "games").glob("*.json"))}
+    games = [game_values(slug, card, studio, networks, trackers) for slug, card in cards.items()]
     pages = {}
     for game in games:
         pages[f"{game['slug']}/index.html"] = template("game.html").substitute(game)
-        pages[f"{game['slug']}/privacy.html"] = template("privacy.html").substitute(game)
+        pages[f"{game['slug']}/privacy.html"] = sections(template("privacy.html").substitute(game), cards[game["slug"]])
     pages["index.html"] = template("home.html").substitute(
         publisher=html.escape(studio["publisher"]),
         email=html.escape(studio["email"]),
         games="\n".join(template("home_game.html").substitute(game) for game in games),
     )
     return pages
+
+
+# `<!-- if ads -->…<!-- else -->…<!-- end -->` in a template: the part for what the game has. A game without ads has
+# no ad networks; Remote Config is in every game unless its card says "remote_config": false; "consent_first": true —
+# the game sends nothing before the player agrees on its first screen (Hunger Race).
+SECTION = re.compile(r"<!-- if (\w+) -->\n?(.*?)(?:<!-- else -->\n?(.*?))?<!-- end -->\n?", re.S)
+
+
+def sections(page, card):
+    has = {"ads": bool(card["ad_networks"]), "remote_config": card.get("remote_config", True),
+           "consent_first": card.get("consent_first", False)}
+    return SECTION.sub(lambda m: m.group(2) if has[m.group(1)] else (m.group(3) or ""), page)
 
 
 def text_only(page):
