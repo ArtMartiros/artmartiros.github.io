@@ -57,13 +57,21 @@
 <!-- if ads -->
 <h2>Advertising</h2>
 <p>Some versions of the game show ads: ${ad_formats}. The ads are served through AppLovin MAX, which picks an ad from several ad networks: ${ad_networks_text}. These companies receive your device’s advertising ID, device information, IP address and your interactions with the ads in order to show ads, count views and clicks, prevent fraud and, where you allow it, show ads based on your interests.</p>
+<!-- else -->
+<h2>Advertising</h2>
+<p>The game doesn’t show ads.</p>
+<!-- end -->
+<!-- if google_consent -->
 <ul>
   <li>In the European Economic Area, the United Kingdom and Switzerland the game asks for your consent with Google’s consent form before ads are personalized.</li>
   <li>On iPhone the game asks for your permission to track you (App Tracking Transparency). If you don’t allow it, your advertising identifier isn’t shared.</li>
 </ul>
-<!-- else -->
-<h2>Advertising</h2>
-<p>The game doesn’t show ads.</p>
+<!-- end -->
+<!-- if own_consent -->
+<ul>
+  <li>In the European Economic Area, the United Kingdom and Switzerland the game asks for your consent before it starts any ads. If you agree, the ad networks named in the window may use your device’s advertising ID and how you play to show you ads that fit and to measure them, and ${attribution_text} and Google Analytics for Firebase may measure which ads brought you to the game. If you don’t, the game starts no ads and they don’t measure advertising for you: rewards come with the game’s own short video. You can change your choice at any time in the game’s Settings → Privacy.</li>
+  <li>Everywhere, you can turn on “Do not sell or share my personal information” in the game’s Settings → Privacy. The ad networks then don’t use your data for targeted advertising.</li>
+</ul>
 <!-- end -->
 
 <h2>Who receives the data</h2>
