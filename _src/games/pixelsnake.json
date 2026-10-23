@@ -5,12 +5,12 @@
   "platforms": "Android",
   "description": "A giant snake of colored cubes is crawling to your gate. Call a color army and hold it back. A tower defense game for Android.",
   "about": "Snakes at the Gate is a tower defense game about colors. A giant snake of colored cubes crawls toward your gate, and you are the last line of defense. Tap a color to call a shooter to the wall: each shooter hits only the cubes of its own color. Every call is a roll of luck, and a shooter can come out Epic with two barrels or Legendary with three. Break the chests inside the snake, pick cards and grow stronger between runs.",
-  "policy_date": "2026-10-22",
+  "policy_date": "2026-10-23",
   "play_data": "The runs you start, win, lose and restart, the shooters you call and their rarity, the chests you break and the cards you pick, the upgrades you buy, the videos you watch, time spent and how smoothly the game runs",
   "settings_example": "whether to suggest an update of the game",
   "attribution": ["Tenjin"],
   "ad_formats": "if you choose to watch it, a short video that gives you more paint, an extra slot on the wall, new cards, all three cards or double coins",
   "ad_networks": ["AppLovin", "Google AdMob", "Unity Ads"],
-  "audience": "players aged 13 and over",
+  "audience": "players aged 18 and over",
   "own_consent": true
 }
