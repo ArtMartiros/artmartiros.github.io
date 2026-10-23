@@ -9,8 +9,9 @@
   "play_data": "The runs you start, win, lose and restart, the shooters you call and their rarity, the chests you break and the cards you pick, the upgrades you buy, the videos you watch, time spent and how smoothly the game runs",
   "settings_example": "whether to suggest an update of the game",
   "attribution": ["Tenjin"],
-  "ad_formats": "if you choose to watch it, a short video that gives you more paint, an extra slot on the wall, new cards, all three cards or double coins",
+  "ad_formats": "if you choose to watch it, a short video that gives you more paint, an extra slot on the wall, new cards, all three cards, double coins or a second chance when the snake reaches the wall",
   "ad_networks": ["AppLovin", "Google AdMob", "Unity Ads"],
   "audience": "players aged 18 and over",
-  "own_consent": true
+  "own_consent": true,
+  "age_signals": true
 }

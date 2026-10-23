@@ -69,8 +69,13 @@
 <!-- end -->
 <!-- if own_consent -->
 <ul>
-  <li>In the European Economic Area, the United Kingdom and Switzerland the game asks for your consent before it starts any ads. If you agree, the ad networks named in the window may use your device’s advertising ID and how you play to show you ads that fit and to measure them, and ${attribution_text} and Google Analytics for Firebase may measure which ads brought you to the game. If you don’t, the game starts no ads and they don’t measure advertising for you: rewards come with the game’s own short video. You can change your choice at any time in the game’s Settings → Privacy.</li>
+  <li>In the European Economic Area, the United Kingdom and Switzerland the game asks for your consent before it starts any ads. If you agree, the ad networks named in the window may use your device’s advertising ID and how you play to show you ads that fit and to measure them, and ${attribution_text} and Google Analytics for Firebase may measure which ads brought you to the game. If you don’t, the game still shows ads, but they aren’t based on your interests, and ${attribution_text} and Google Analytics for Firebase don’t measure advertising for you. With “Manage options” you can choose for ads and for measurement separately. You can change your choice at any time in the game’s Settings → Privacy.</li>
   <li>Everywhere, you can turn on “Do not sell or share my personal information” in the game’s Settings → Privacy. The ad networks then don’t use your data for targeted advertising.</li>
+</ul>
+<!-- end -->
+<!-- if age_signals -->
+<ul>
+  <li>In the United States, before it starts ads the game asks Google Play for your age range (Play Age Signals). In some states Google Play shares it only if you agree. The game starts no ads for players under 13, for supervised accounts whose parent hasn’t approved the game, where the law requires a verified age that isn’t verified, or if Google Play doesn’t answer. Your age range stays on your device: the game doesn’t send it to analytics or to ad networks.</li>
 </ul>
 <!-- end -->
 
@@ -112,7 +117,11 @@ ${attribution_rows}
 </ul>
 
 <h2>Children</h2>
+<!-- if age_signals -->
+<p>${name} is made for ${audience} and isn’t directed at children under 13. If Google Play tells the game that a player is under 13, the game shows no ads and doesn’t measure advertising for that player: it sends only crash reports and gameplay analytics that we need to run and improve the game, without the advertising ID, and we don’t use them for advertising or to build profiles. Otherwise we don’t knowingly collect data from children under 13. If you think a child under 13 has played the game, write to us and we will delete the data.</p>
+<!-- else -->
 <p>${name} is made for ${audience} and isn’t directed at children under 13. We don’t knowingly collect data from children under 13. If you think a child under 13 has played the game, write to us and we will delete the data.</p>
+<!-- end -->
 
 <h2>Security</h2>
 <p>The game sends data only over encrypted connections (HTTPS). The services above store it on their protected systems, where only authorized people can access it.</p>

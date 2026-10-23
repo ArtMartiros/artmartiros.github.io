@@ -100,7 +100,7 @@ def build():
 # no ad networks; Remote Config is in every game unless its card says "remote_config": false; "consent_first": true —
 # the game sends nothing before the player agrees on its first screen (Hunger Race); "own_consent": true — ads with the
 # game's own consent window in Europe instead of Google's form, and «Do not sell or share» in its settings (Snakes at the
-# Gate, until it has AdMob).
+# Gate, until it has AdMob); "age_signals": true — in the US the game asks Google Play for the player's age range before ads.
 SECTION = re.compile(r"<!-- if (\w+) -->\n?(.*?)(?:<!-- else -->\n?(.*?))?<!-- end -->\n?", re.S)
 
 
@@ -109,7 +109,8 @@ def sections(page, card):
     has = {"ads": ads, "remote_config": card.get("remote_config", True),
            "consent_first": card.get("consent_first", False),
            "own_consent": ads and card.get("own_consent", False),
-           "google_consent": ads and not card.get("own_consent", False)}
+           "google_consent": ads and not card.get("own_consent", False),
+           "age_signals": ads and card.get("age_signals", False)}
     return SECTION.sub(lambda m: m.group(2) if has[m.group(1)] else (m.group(3) or ""), page)
 
 
